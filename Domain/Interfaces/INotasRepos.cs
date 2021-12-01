@@ -8,5 +8,6 @@ namespace Domain.Interfaces
     public interface INotasRepos : IModel<Nota>
     {
         decimal CalculoPromedioNotas(List<Nota> Nota);
+        void Limpiar();
     }
 }

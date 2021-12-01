@@ -34,5 +34,9 @@ namespace Infraestructure
         {
             return 0;
         }
+        public void Limpiar()
+        {
+            datos.Clear();
+        }
     }
 }

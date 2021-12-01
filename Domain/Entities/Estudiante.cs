@@ -13,6 +13,6 @@ namespace Domain.Entities
         public string Municipio { get; set; }
         public string Departamento { get; set; }
         public List<Nota> Notas { get; set; }
-        public double Promedio { get; set; }
+        public decimal Promedio { get; set; }
     }
 }

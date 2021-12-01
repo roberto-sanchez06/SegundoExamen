@@ -9,6 +9,6 @@ namespace AppCore.Interfaces
     {
         List<Estudiante> FindAll(Predicate<Estudiante> predicate);
         Estudiante GetEstudianteById(int id);
-        List<Estudiante> MejoresPromedios(List<Estudiante> estudiante)
+        List<Estudiante> MejoresPromedios(List<Estudiante> estudiante);
     }
 }

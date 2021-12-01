@@ -8,5 +8,6 @@ namespace AppCore.Interfaces
     public interface INotaService : IService<Nota>
     {
         decimal CalculoPromedioNotas(List<Nota> Nota);
+        void Limpiar();
     }
 }

@@ -15,7 +15,9 @@ namespace ExamenDos
     public partial class FrmEstudiante : Form
     {
         public IEstudianteService estudianteService { get; set; }
+        public INotaService Nota { get; set; }
         private List<Asignatura> asignaturas;
+        //private List<Nota> notas;
         private int contador = 0;
         public FrmEstudiante()
         {
@@ -34,25 +36,52 @@ namespace ExamenDos
 
         private void RegistrarAsignatura_Click(object sender, EventArgs e)
         {
+            if (contador < 5)
+            {
+                Asignatura asignatura = asignaturas[contador];
+                Nota nota = new Nota()
+                {
+                    Asignatura = asignatura,
+                    SIstematico = (int)nudSiste.Value,
+                    PrimerParcial = (int)nudPrimerP.Value,
+                    SegundoParcial = (int)nudSegundoP.Value
+                };
+                Nota.Add(nota);
+                contador++;
+                MessageBox.Show($"Añadio la nota de {nota.Asignatura.Nombre}");
 
+                FrmEstudiante_Load(sender, e);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Estudiante estudiante = new Estudiante()
+            if (contador < 5)
             {
-                Id = estudianteService.GetLastId(),
-                Nombre=txtApellidos.Text,
-                Apellidos=txtApellidos.Text,
-                Carnet=txtCarnet.Text,
-                Municipio=txtMunicipio.Text,
-                Departamento=txtDepartamento.Text,
-            };
+                MessageBox.Show("No puede añadir al estudiante porque no le ha puesto todas las notas");
+            }
+            else
+            {
+                Estudiante estudiante = new Estudiante()
+                {
+                    Id = estudianteService.GetLastId()+1,
+                    Nombre = txtApellidos.Text,
+                    Apellidos = txtApellidos.Text,
+                    Carnet = txtCarnet.Text,
+                    Municipio = txtMunicipio.Text,
+                    Departamento = txtDepartamento.Text,
+                    Notas = Nota.FindAll(),
+                    Promedio = Nota.CalculoPromedioNotas(Nota.FindAll()),
+                };
+                estudianteService.Add(estudiante);
+                Nota.Limpiar();
+                Dispose();
+            }
         }
 
         private void FrmEstudiante_Load(object sender, EventArgs e)
         {
-
+            lblClase.Text = asignaturas[contador].Nombre;
         }
     }
 }

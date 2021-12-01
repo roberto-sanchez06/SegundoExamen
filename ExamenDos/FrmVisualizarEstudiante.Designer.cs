@@ -36,9 +36,9 @@ namespace ExamenDos
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(190, 135);
+            this.dataGridView1.Location = new System.Drawing.Point(65, 125);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(672, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // FrmVisualizarEstudiante
@@ -49,6 +49,7 @@ namespace ExamenDos
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmVisualizarEstudiante";
             this.Text = "FrmVisualizarEstudiante";
+            this.Load += new System.EventHandler(this.FrmVisualizarEstudiante_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

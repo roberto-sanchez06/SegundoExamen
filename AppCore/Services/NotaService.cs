@@ -35,5 +35,10 @@ namespace AppCore.Services
         {
             return claseRepository.GetLastId();
         }
+
+        public void Limpiar()
+        {
+            claseRepository.Limpiar();
+        }
     }
 }
