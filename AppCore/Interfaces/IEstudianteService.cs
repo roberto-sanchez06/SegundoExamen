@@ -8,5 +8,7 @@ namespace AppCore.Interfaces
     public interface IEstudianteService : IService<Estudiante>
     {
         List<Estudiante> FindAll(Predicate<Estudiante> predicate);
+        Estudiante GetEstudianteById(int id);
+        List<Estudiante> MejoresPromedios(List<Estudiante> estudiante)
     }
 }

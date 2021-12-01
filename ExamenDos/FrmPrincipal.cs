@@ -14,8 +14,10 @@ namespace ExamenDos
     public partial class FrmPrincipal : Form
     {
         private IEstudianteService estudiante;
-        public FrmPrincipal(IEstudianteService estudiante)
+        private INotaService NotaService;
+        public FrmPrincipal(IEstudianteService estudiante, INotaService notaService)
         {
+            this.NotaService = notaService;
             this.estudiante= estudiante;
             InitializeComponent();
         }

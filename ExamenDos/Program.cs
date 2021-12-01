@@ -24,11 +24,14 @@ namespace ExamenDos
             builder.RegisterType<EstudianteRepos>().As<IEstudianteRepos>();
             builder.RegisterType<EstudinateService>().As<IEstudianteService>();
 
+            builder.RegisterType<NotaRepos>().As<INotasRepos>();
+            builder.RegisterType<NotaService>().As<INotaService>();
+
             var container = builder.Build();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal(container.Resolve<IEstudianteService>()));
+            Application.Run(new FrmPrincipal(container.Resolve<IEstudianteService>(), container.Resolve<INotaService>()));
         }
     }
 }

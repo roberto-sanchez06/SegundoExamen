@@ -37,13 +37,19 @@ namespace Infraestructure
             return datos;
         }
 
+        public Estudiante GetEstudianteById(int id)
+        {
+            return datos.Find(x => x.Id == id);
+        }
+
         public int GetLastId()
         {
             return datos.Count == 0 ? 0 : datos.Last().Id;
         }
-        public List<Estudiante> MejoresPromedios()
+        public List<Estudiante> MejoresPromedios(List<Estudiante> estudiante)
         {
-            return null;
+            List<Estudiante> notasOrdenadas = estudiante.OrderByDescending(x => x.Promedio).ToList();
+            return notasOrdenadas.Take(3).ToList();
         }
     }
 }
